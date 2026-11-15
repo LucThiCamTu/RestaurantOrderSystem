@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Order System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">🍽️ Restaurant Order</div>
+        <nav>
+            <a href="#">Trang chủ</a>
+            <a href="#system">Hệ thống</a>
+            <a href="#about">Giới thiệu</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="tag">RESTAURANT MANAGEMENT SYSTEM</p>
+
+            <h1>Hệ thống đặt món<br>
+                và xử lý tại bếp
+            </h1>
+
+            <p class="description">
+                Giải pháp hỗ trợ khách hàng đặt món trực tuyến,
+                quản lý đơn hàng và xử lý món ăn tại bếp.
+            </p>
+
+            <div class="buttons">
+                <a href="#system" class="btn-primary">
+                    Kiểm tra hệ thống
+                </a>
+            </div>
+        </section>
+
+        <section id="system" class="system">
+            <h2>Trạng thái hệ thống</h2>
+
+            <div class="status-card">
+                <div id="status-icon">⏳</div>
+                <h3 id="status-title">Đang kiểm tra...</h3>
+                <p id="status-message">
+                    Vui lòng chờ trong giây lát.
+                </p>
+
+                <button onclick="checkSystem()">
+                    Kiểm tra lại
+                </button>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>Giới thiệu dự án</h2>
+            <p>
+                Hệ thống cho phép khách hàng xem thực đơn,
+                đặt món và theo dõi quá trình xử lý đơn hàng.
+                Bộ phận bếp có thể tiếp nhận và cập nhật
+                trạng thái đơn hàng.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Restaurant Order System</p>
+        <p>Đề tài 04 - Hệ thống đặt món và xử lý tại bếp</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

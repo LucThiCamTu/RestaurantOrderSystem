@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/shared-contracts/">
+    <Project Path="shared-contracts/Shared.Contracts.csproj" />
+  </Folder>
+</Solution>

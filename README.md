@@ -40,7 +40,7 @@ Dự án hỗ trợ khách hàng đặt món trực tuyến, quản lý đơn h�
 ## 5. Tiến độ thực hiện
 
 - [x] Tuần 1: Khởi tạo dự án.
-- [ ] Tuần 2: Xây dựng cơ sở dữ liệu và Menu API.
+- [x] Tuần 2: Xây dựng cơ sở dữ liệu và Menu API.
 - [ ] Tuần 3: Xây dựng chức năng đặt món.
 - [ ] Tuần 4: Tích hợp RabbitMQ.
 - [ ] Tuần 5: Xây dựng Kitchen Worker.

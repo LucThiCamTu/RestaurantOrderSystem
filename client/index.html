@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -8,67 +7,97 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <div class="logo">🍽️ Restaurant Order</div>
-        <nav>
-            <a href="#">Trang chủ</a>
-            <a href="#system">Hệ thống</a>
-            <a href="#about">Giới thiệu</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <p class="tag">RESTAURANT MANAGEMENT SYSTEM</p>
-
-            <h1>Hệ thống đặt món<br>
-                và xử lý tại bếp
-            </h1>
-
-            <p class="description">
-                Giải pháp hỗ trợ khách hàng đặt món trực tuyến,
-                quản lý đơn hàng và xử lý món ăn tại bếp.
-            </p>
-
-            <div class="buttons">
-                <a href="#system" class="btn-primary">
-                    Kiểm tra hệ thống
-                </a>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-highlight">Restaurant</span> Order
             </div>
-        </section>
-
-        <section id="system" class="system">
-            <h2>Trạng thái hệ thống</h2>
-
-            <div class="status-card">
-                <div id="status-icon">⏳</div>
-                <h3 id="status-title">Đang kiểm tra...</h3>
-                <p id="status-message">
-                    Vui lòng chờ trong giây lát.
-                </p>
-
-                <button onclick="checkSystem()">
-                    Kiểm tra lại
+            <nav class="nav-menu">
+                <button class="nav-item active" onclick="switchTab('overview', this)">
+                    <span class="nav-icon">◼</span> Tổng quan
                 </button>
-            </div>
-        </section>
+                <button class="nav-item" onclick="switchTab('menu', this)">
+                    <span class="nav-icon">🍽️</span> Thực đơn
+                </button>
+                <button class="nav-item" onclick="switchTab('orders', this)">
+                    <span class="nav-icon">🧾</span> Đơn hàng & Bếp
+                </button>
+                <button class="nav-item" onclick="switchTab('system', this)">
+                    <span class="nav-icon">⚙️</span> Trạng thái hệ thống
+                </button>
+            </nav>
+        </aside>
 
-        <section id="about" class="about">
-            <h2>Giới thiệu dự án</h2>
-            <p>
-                Hệ thống cho phép khách hàng xem thực đơn,
-                đặt món và theo dõi quá trình xử lý đơn hàng.
-                Bộ phận bếp có thể tiếp nhận và cập nhật
-                trạng thái đơn hàng.
-            </p>
-        </section>
-    </main>
+        <main class="main-content">
+            <section id="tab-overview" class="tab-panel active">
+                <div class="page-header">
+                    <h1>Tổng quan</h1>
+                    <p>Tổng quan tình hình hoạt động nhà hàng theo thời gian thực</p>
+                </div>
 
-    <footer>
-        <p>© 2026 Restaurant Order System</p>
-        <p>Đề tài 04 - Hệ thống đặt món và xử lý tại bếp</p>
-    </footer>
+                <div class="stats-grid">
+                    <div class="stat-card highlight-green">
+                        <span class="stat-label">TỔNG SỐ MÓN ĂN</span>
+                        <div class="stat-value" id="stat-total-menu">0</div>
+                        <span class="stat-sub">Theo dữ liệu PostgreSQL</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">TRẠNG THÁI API</span>
+                        <div class="stat-value" id="stat-api-status" style="font-size: 22px; margin-top: 8px;">Đang kiểm tra...</div>
+                        <span class="stat-sub">.NET 10 Minimal API</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">ĐƠN HÀNG HÔM NAY</span>
+                        <div class="stat-value">0</div>
+                        <span class="stat-sub">Sẵn sàng cho Tuần 3</span>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Giới thiệu hệ thống</h3>
+                    <p>Hệ thống cho phép khách hàng xem thực đơn, đặt món và theo dõi quá trình xử lý đơn hàng. Bộ phận bếp có thể tiếp nhận và cập nhật trạng thái đơn hàng theo thời gian thực.</p>
+                </div>
+            </section>
+
+            <section id="tab-menu" class="tab-panel">
+                <div class="page-header">
+                    <h1>Thực đơn</h1>
+                    <p>Danh sách món ăn phục vụ hôm nay (Phân trang từ PostgreSQL)</p>
+                </div>
+
+                <div id="menu-list" class="menu-grid">
+                    <p>Đang tải thực đơn...</p>
+                </div>
+
+                <div id="pagination" class="pagination-controls"></div>
+            </section>
+
+            <section id="tab-orders" class="tab-panel">
+                <div class="page-header">
+                    <h1>Đơn hàng & Bếp</h1>
+                    <p>Quản lý đặt món và hàng đợi xử lý tại bếp (RabbitMQ)</p>
+                </div>
+                <div class="info-box">
+                    <h3>Tính năng đang phát triển (Tuần 3 & Tuần 4)</h3>
+                    <p>Chức năng tạo đơn hàng (POST /api/orders) và đẩy sự kiện sang Kitchen Worker qua RabbitMQ sẽ được tích hợp ở giai đoạn tiếp theo.</p>
+                </div>
+            </section>
+
+            <section id="tab-system" class="tab-panel">
+                <div class="page-header">
+                    <h1>Trạng thái hệ thống</h1>
+                    <p>Kiểm tra kết nối giữa Frontend, Backend (.NET 10) và Database</p>
+                </div>
+
+                <div class="status-card">
+                    <div id="status-icon" class="icon">⏳</div>
+                    <h3 id="status-title">Đang kiểm tra kết nối...</h3>
+                    <p id="status-message">Vui lòng đợi trong giây lát</p>
+                    <button onclick="checkSystem()" class="btn-primary">Kiểm tra lại</button>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="app.js"></script>
 </body>

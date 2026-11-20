@@ -1,33 +1,22 @@
 services:
-  postgres-db:
-    image: postgres:16-alpine
-    container_name: kitchen-db
+  postgres:
+    image: postgres:15
+    container_name: restaurant_postgres
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: Password123!
-      POSTGRES_DB: KitchenOrderDb
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: restaurant_db
     ports:
-      - "5432:5432"
+      - "5435:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - kitchen-network
+      - postgres_data:/var/lib/postgresql/data
 
   rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: kitchen-rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
+    image: rabbitmq:3-management
+    container_name: restaurant_rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
-    networks:
-      - kitchen-network
 
 volumes:
-  pgdata:
-
-networks:
-  kitchen-network:
-    driver: bridge
+  postgres_data:
